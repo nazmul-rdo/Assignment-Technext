@@ -24,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/add-user" element={<UserForm />} />
+          <Route path="/test" element={<UserForm />} />
           <Route path="/" element={<User users={users} />} />
           <Route path='/:id' element={<UserDetails users={users} />} />
       </Routes>

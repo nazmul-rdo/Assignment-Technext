@@ -1,55 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faMapMarkerAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import SearchForm from './SearchForm';
+
+
 const User = ({ users }) => {
   return (
     <div className="container mx-auto">
-      <div className="">
-        
-      </div>
-      
-        <div className=' flex w-full bg-white shadow-xl shadow-neutral-100 border'>
+      <h1>
+        This a list of Avatar
+      </h1>
+      <SearchForm />
+
+      <div className='flex flex-wrap justify-center'>
         {users.map((user, index) => (
-          // <SingleUser user={user} key={index} />      
-          
-          <div className='p-10 flex flex-wrap-wrapper w-1/4'>
-          <div className="bg-white rounded-lg shadow-md p-4">
-            <img src={user.image} alt="Avatar" className="rounded-full w-16 h-16 mx-auto mb-2" />
-            <Link to={`/${user.id}`} className="text-blue-500 font-bold text-center block">
-              {user.firstName} {user.lastName}
-            </Link>
-    
-            <p className="text-gray-600 text-center">Email: {user.email}</p>
-            <p className="text-gray-600 text-center">
-              Address: {user.address.address},  {user.address.city}
-            </p>
-            <p className="text-gray-600 text-center">Company Name: {user.company.name}</p>
-          </div>
-        </div>
+          <UserCard user={user} key={index} />
         ))}
-        </div>
+      </div>
     </div>
   );
 };
 
-// const SingleUser = ({ user }) => {
-//   return (
-//     <div className='w-64'>
-//       <div className="bg-white rounded-lg shadow-md p-4">
-//         <img src={user.image} alt="Avatar" className="rounded-full w-16 h-16 mx-auto mb-2" />
-//         <Link to={`/${user.id}`} className="text-blue-500 font-bold text-center block">
-//           {user.firstName} {user.lastName}
-//         </Link>
+const UserCard = ({ user }) => {
+  return (
+    <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+      <div className="bg-gray-200 rounded-lg flex-col items-center">
 
-//         <p className="text-gray-600 text-center">Email: {user.email}</p>
-//         <p className="text-gray-600 text-center">
-//           Address: {user.address.street}, {user.address.suite}, {user.address.city}
-//         </p>
-//         <p className="text-gray-600 text-center">Company Name: {user.company.name}</p>
-//       </div>
-//     </div>
-//   );
-// };
+        <div className='h-32 flex justify-center items-center bg-blue-300 p-8 mb-4'>
+          <img src={user.image} alt="Avatar" className="w-16 h-auto opacity-0" />
+        </div>
+        <div className='p-4'>
+          <Link to={`/${user.id}`} className="w-full text-blue-500 font-bold text-lg text-center mb-2">
+            {user.firstName} {user.lastName}
+          </Link>
 
-// export { User, SingleUser };
+          <div className="flex gap-4 items-center text-gray-600 text-center mb-2">
+            <FontAwesomeIcon icon={faBuilding} className="pr-4" />
+            <p>{user.company.name}</p>
+          </div>
+          <div className="flex justify-start items-center text-gray-600 text-center mb-2">
+            <FontAwesomeIcon icon={faEnvelope} className="pr-4" />
+            <p>{user.email}</p>
+          </div>
+          <div className="flex justify-start items-center text-gray-600 text-center">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="pr-4" />
+           <p className=''> {user.address.address}, {user.address.city}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { User, UserCard };
 export default User;
