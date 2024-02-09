@@ -4,7 +4,7 @@ import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons'; // 
 
 const SearchForm = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-end	">
       {/* Search Box */}
       <div className="flex items-center mr-4">
         <input
