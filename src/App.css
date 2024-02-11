@@ -2,11 +2,15 @@ body{
     background: lightgray !important;;
 }
 
-
 .card-background{
     background: rgb(252, 252, 252) !important;;
 }
-
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.justify-end{
+    justify-content: end;
+}
 .text-xxx-large {
     font-size: xx-large;
 }
