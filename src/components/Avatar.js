@@ -12,7 +12,7 @@ export default function Avatar({ user }) {
   };
 
   const config = {
-    sex: genderValue(user.gender),
+    // sex: genderValue(user.gender),
     eyeColor: user.eyeColor,
     bgColor: "#506af44d"
   };
