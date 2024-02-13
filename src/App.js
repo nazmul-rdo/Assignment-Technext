@@ -1,7 +1,7 @@
 
 import "./App.css";
 import React, { useState, useEffect, createContext } from "react";
-import { Route, Routes, Link, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import User from "./components/User";
 import UserDetails from "./components/UserDetails";
 import NewUser from "./components/NewUser";
@@ -52,6 +52,7 @@ function App() {
     setSortOption(event.target.value);
   };
 
+  
   const addUser = (newUser) => {
     setUsers((prevUsers) => [...prevUsers, newUser]);
     console.log(users)
@@ -59,32 +60,36 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <UsersContext.Provider value={{
         searchQuery,
         handleSearchInputChange,
         handleSortOptionChange,
         sortOption,
-        sortedUsers
-
+        sortedUsers,
+        addUser,
       }}>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none">
-          <Link to={'/'} >Add User</Link>
-        </button>
 
         <Routes>
           <Route
             path="/"
             element={
               loading ? (
-                <div className="flex justify-center items-center h-[100vh]">Loading...</div>
+                <div className="flex justify-center items-center h-[100vh]">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
               ) : (
-                <User users={users} />
+                <User />
               )
             }
           />
-          <Route path="/:id" element={<UserDetails />} />
-          <Route path="/adduser" element={<NewUser addUser={addUser} />} />
+          <Route
+            path="/:id"
+            element={<UserDetails />}
+          />
+          <Route
+            path="/adduser"
+            element={<NewUser />}
+          />
         </Routes>
 
       </UsersContext.Provider>

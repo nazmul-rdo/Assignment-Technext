@@ -3,7 +3,7 @@ body{
 }
 
 .card-background{
-    background: rgb(252, 252, 252) !important;;
+    background: #fcfcfc !important;;
 }
 .flex-wrap{
     flex-wrap: wrap;
